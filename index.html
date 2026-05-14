@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --white:       #F2F2F2;
       --cream:       #E5DDD0;
@@ -20,10 +19,9 @@
       --text-mid:    #5A5248;
       --text-muted:  #8A7E72;
       --border:      #D6CEBC;
+      --footer-bg:   #EBEBEB;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: var(--white);
@@ -35,34 +33,57 @@
 
     /* ─── HEADER ─── */
     .site-header {
-      background: var(--white);
+      background: #ffffff;
       border-bottom: 1px solid var(--border);
-      padding: 34px 54px 22px;
+      padding: 28px 54px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 240px;
+      min-height: 120px;
     }
-    .logo-block { text-align: center; }
-    .logo-block .nh-sub {
-      font-size: 0.62rem;
-      letter-spacing: 0.36em;
+    .logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .logo-block img {
+      height: 110px;
+      width: auto;
+      display: block;
+    }
+    /* "BY WEST USA REALTY" text is baked into the logo image in the reference;
+       we keep the sub-line for when the logo is a plain img without that text */
+    .nh-sub {
+      font-size: 0.58rem;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--khaki-dark);
-      margin-top: -6px;
-    }
-    .header-contact {
-      font-size: 0.78rem;
       color: var(--text-muted);
+      margin-top: 4px;
+    }
+    /* Right side: phone large, city below */
+    .header-contact {
       text-align: right;
-      display: none;
+      line-height: 1.3;
     }
-    .header-contact a {
-      color: var(--text);
+    .header-contact .hc-phone {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
       text-decoration: none;
-      font-weight: 500;
+      letter-spacing: 0.02em;
     }
-    @media (min-width: 640px) { .header-contact { display: block; } }
+    .header-contact .hc-city {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    @media (max-width: 480px) {
+      .site-header { padding: 16px 20px; min-height: auto; }
+      .logo-block img { height: 72px; }
+      .header-contact .hc-phone { font-size: 0.88rem; }
+    }
 
     /* ─── HERO ─── */
     .hero {
@@ -123,8 +144,6 @@
       margin-bottom: 32px;
     }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    /* Photo frame */
     .hero-photo-wrap { display: flex; justify-content: center; align-items: flex-end; }
     .hero-photo-frame { position: relative; }
     .hero-photo-frame::before {
@@ -175,36 +194,15 @@
       transition: all 0.22s ease;
       border: 1.5px solid transparent; white-space: nowrap;
     }
-    .btn-dark {
-      background: var(--khaki-dark);
-      color: var(--white);
-      border-color: var(--khaki-dark);
-    }
+    .btn-dark { background: var(--khaki-dark); color: var(--white); border-color: var(--khaki-dark); }
     .btn-dark:hover { background: var(--black); border-color: var(--black); }
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border-color: var(--khaki);
-    }
+    .btn-outline { background: transparent; color: var(--text); border-color: var(--khaki); }
     .btn-outline:hover { background: var(--khaki); color: var(--white); border-color: var(--khaki); }
-    .btn-khaki {
-      background: var(--khaki);
-      color: var(--white);
-      border-color: var(--khaki);
-    }
+    .btn-khaki { background: var(--khaki); color: var(--white); border-color: var(--khaki); }
     .btn-khaki:hover { background: var(--khaki-dark); border-color: var(--khaki-dark); }
-    .btn-outline-white {
-      background: transparent;
-      color: var(--white);
-      border-color: rgba(242,242,242,0.5);
-    }
-    .btn-outline-white:hover { border-color: var(--white); }
 
     /* ─── RESOURCES STRIP ─── */
-    .resources-strip {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-    }
+    .resources-strip { background: var(--white); border-bottom: 1px solid var(--border); }
     .resources-grid {
       max-width: 1100px;
       margin: 0 auto;
@@ -223,8 +221,7 @@
     }
     .resource-icon {
       width: 40px; height: 40px; border-radius: 50%;
-      background: var(--cream);
-      border: 1px solid var(--border);
+      background: var(--cream); border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
     }
     .resource-icon svg { color: var(--khaki-dark); }
@@ -233,10 +230,7 @@
       font-size: clamp(1.2rem, 2.5vw, 1.5rem);
       font-weight: 600; color: var(--black); line-height: 1.2;
     }
-    .resource-card p {
-      font-size: 0.88rem; color: var(--text-mid);
-      line-height: 1.75; flex: 1;
-    }
+    .resource-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; flex: 1; }
 
     /* ─── SECTION LAYOUT ─── */
     .section {
@@ -261,8 +255,6 @@
       line-height: 1.15; margin-bottom: 8px;
     }
     .section-title em { font-style: italic; }
-
-    /* ─── MAIN GRID ─── */
     .main-grid {
       display: grid; grid-template-columns: 1fr;
       gap: 40px; align-items: start;
@@ -270,38 +262,23 @@
     @media (min-width: 768px) {
       .main-grid { grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); }
     }
-    .left-prose p {
-      font-size: 0.92rem; color: var(--text-mid);
-      line-height: 1.85; margin-bottom: 20px;
-    }
-    .divider-line {
-      width: 100%; height: 1px;
-      background: var(--border); margin: 28px 0;
-    }
-    .stats-row {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 12px; margin-top: 28px;
-    }
+    .left-prose p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 20px; }
+    .divider-line { width: 100%; height: 1px; background: var(--border); margin: 28px 0; }
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
     .stat {
       text-align: center; padding: 20px 10px;
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 3px;
+      background: var(--cream); border: 1px solid var(--border); border-radius: 3px;
     }
     .stat .num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2rem; font-weight: 600;
       color: var(--black); line-height: 1; margin-bottom: 5px;
     }
-    .stat .lbl {
-      font-size: 0.66rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--text-muted);
-    }
+    .stat .lbl { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
 
     /* ─── FORM CARD ─── */
     .form-card {
-      background: var(--cream);
-      border: 1px solid var(--border);
+      background: var(--cream); border: 1px solid var(--border);
       border-radius: 4px;
       padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 36px);
       position: sticky; top: 24px;
@@ -323,10 +300,7 @@
       line-height: 1.15; margin-bottom: 6px;
     }
     .form-card h2 em { font-style: italic; color: var(--khaki-dark); }
-    .form-sub {
-      font-size: 0.82rem; color: var(--text-mid);
-      margin-bottom: 28px; font-weight: 300;
-    }
+    .form-sub { font-size: 0.82rem; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
     .fg { margin-bottom: 16px; }
     .fg label {
       display: block; font-size: 0.6rem; font-weight: 500;
@@ -335,8 +309,7 @@
     }
     .fg input, .fg select {
       width: 100%; padding: 13px 15px;
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: var(--white); border: 1px solid var(--border);
       border-radius: 3px; font-size: 0.92rem;
       font-family: 'Inter', sans-serif;
       color: var(--text); outline: none;
@@ -363,14 +336,8 @@
     }
     .submit-btn:hover { background: var(--black); }
     .submit-btn:disabled { background: var(--khaki-light); cursor: not-allowed; }
-    .privacy-note {
-      text-align: center; font-size: 0.7rem;
-      color: var(--text-muted); margin-top: 14px;
-    }
-    .error-msg {
-      display: none; text-align: center;
-      font-size: 0.8rem; color: #b94a3a; margin-top: 12px;
-    }
+    .privacy-note { text-align: center; font-size: 0.7rem; color: var(--text-muted); margin-top: 14px; }
+    .error-msg { display: none; text-align: center; font-size: 0.8rem; color: #b94a3a; margin-top: 12px; }
     .success-state { display: none; text-align: center; padding: 20px 0 10px; }
     .success-state .s-icon { font-size: 2.4rem; margin-bottom: 12px; }
     .success-state h3 {
@@ -397,32 +364,27 @@
 
     /* ─── FOOTER ─── */
     .site-footer {
-      background: var(--white);
+      background: var(--footer-bg);
       border-top: 1px solid var(--border);
-      padding: 44px clamp(20px, 5vw, 60px) 30px;
+      padding: 44px clamp(20px, 5vw, 60px) 0;
     }
     .footer-inner {
       max-width: 980px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
     }
 
-    /* Two-column row: contact left, quick links right */
+    /* Two-column: Contact | Quick Links */
     .footer-cols {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px 80px;
       align-items: start;
-      position: relative;
-      padding-bottom: 94px;
+      padding-bottom: 36px;
     }
     @media (max-width: 580px) {
       .footer-cols { grid-template-columns: 1fr; gap: 36px; }
     }
 
-    /* Contact column */
     .footer-col-label {
       font-size: 0.62rem;
       letter-spacing: 0.22em;
@@ -431,6 +393,8 @@
       font-weight: 500;
       margin-bottom: 16px;
     }
+
+    /* Contact column */
     .footer-contact-block {
       display: flex;
       align-items: flex-start;
@@ -475,6 +439,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      margin-bottom: 28px;
     }
     .footer-link-item {
       display: flex; align-items: center; gap: 9px;
@@ -485,32 +450,15 @@
     .footer-link-item:hover { color: var(--black); }
     .footer-link-item svg { color: var(--khaki-dark); flex-shrink: 0; }
 
-    /* Bottom row: legal left, West USA logo right */
-    .footer-bottom {
+    /* West USA logo inside right column */
+    .footer-westusa-logo {
       display: block;
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-      position: relative;
+      margin-top: 8px;
     }
-    .footer-legal-row {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-    }
-    .footer-logo-strip {
-      position: absolute;
-      left: 50%;
-      top: 210px;
-      transform: translateX(-6%);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-    .footer-logo-strip img {
-      max-height: 120px;
+    .footer-westusa-logo img {
+      max-height: 80px;
       width: auto;
       display: block;
-      filter: drop-shadow(0 1px 4px rgba(0,0,0,0.35));
     }
     .footer-logo-fallback {
       font-size: 0.62rem;
@@ -519,22 +467,14 @@
       color: var(--text-muted);
     }
 
-
-    @media (max-width: 580px) {
-      .footer-cols {
-        grid-template-columns: 1fr;
-        gap: 36px;
-        padding-bottom: 20px;
-      }
-      .footer-logo-strip {
-        position: static;
-        transform: none;
-        margin-top: 18px;
-        justify-content: flex-start;
-      }
-      .footer-logo-strip img {
-        max-height: 96px;
-      }
+    /* Bottom: copyright */
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 18px 0 22px;
+    }
+    .footer-legal-row {
+      font-size: 0.68rem;
+      color: var(--text-muted);
     }
 
     /* ─── MOBILE ─── */
@@ -543,7 +483,6 @@
       .btn { width: 100%; justify-content: center; }
       .stats-row { grid-template-columns: 1fr 1fr; }
       .stats-row .stat:last-child { grid-column: 1 / -1; }
-      .site-header { padding: 16px 20px; }
     }
   </style>
 </head>
@@ -552,21 +491,15 @@
   <!-- ─── HEADER ─── -->
   <header class="site-header">
     <div class="logo-block">
-      <!--
-        Logo image: upload your New Haus logo PNG to your GitHub repo,
-        then update the src below to match. Example:
-        src="https://ll8719.github.io/new-haus-realty/new-haus-logo.png"
-        The mix-blend-mode:multiply makes the black background transparent on light headers.
-      -->
       <img
         src="new-haus-logo.png"
         alt="New Haus Realty Group"
-        style="height:160px; width:auto; display:block; margin:0 auto;"
       >
       <div class="nh-sub">by West USA Realty</div>
     </div>
     <div class="header-contact">
-      <a href="tel:4802178459">480-217-8459</a><br>Phoenix, AZ
+      <a class="hc-phone" href="tel:4802178459">480-217-8459</a>
+      <span class="hc-city">Phoenix, AZ</span>
     </div>
   </header>
 
@@ -607,9 +540,7 @@
           <h3>Buyer Roadmap</h3>
           <p>Nine essential steps to buying your first home — from pre-qualification to keys in hand.</p>
         </div>
-        <a class="btn btn-dark"
-          href="buyer-roadmap.pdf"
-          target="_blank" rel="noopener">
+        <a class="btn btn-dark" href="buyer-roadmap.pdf" target="_blank" rel="noopener">
           Download PDF
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </a>
@@ -635,7 +566,6 @@
   <!-- ─── MAIN CONTENT ─── -->
   <div class="section" id="contact">
     <div class="main-grid">
-
       <!-- Left: About -->
       <div class="left-prose">
         <p class="section-tag">About AJ</p>
@@ -649,7 +579,6 @@
           <div class="stat"><div class="num">EN/ES</div><div class="lbl">Bilingual</div></div>
         </div>
       </div>
-
       <!-- Right: Form -->
       <div id="form-anchor">
         <div class="form-card">
@@ -690,7 +619,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -734,7 +662,7 @@
           </div>
         </div>
 
-        <!-- RIGHT: Quick Links -->
+        <!-- RIGHT: Quick Links + West USA logo -->
         <div>
           <p class="footer-col-label">Quick Links</p>
           <div class="footer-links-list">
@@ -751,20 +679,21 @@
               Contact AJ
             </a>
           </div>
+          <!-- West USA Realty logo sits below the links in the right column -->
+          <div class="footer-westusa-logo">
+            <img
+              src="west-usa-logo.png"
+              alt="West USA Realty"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="footer-logo-fallback" style="display:none;">West USA Realty</div>
+          </div>
         </div>
 
       </div><!-- /footer-cols -->
 
-      <!-- Bottom: legal left, West USA logo right -->
+      <!-- Bottom: copyright -->
       <div class="footer-bottom">
         <p class="footer-legal-row">© 2025 New Haus Realty Group · West USA Realty · Licensed in Arizona</p>
-        <div class="footer-logo-strip">
-          <img
-            src="west-usa-logo.png"
-            alt="West USA Realty"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <div class="footer-logo-fallback" style="display:none;">West USA Realty</div>
-        </div>
       </div>
 
     </div>
@@ -775,7 +704,6 @@
     const submitBtn = document.getElementById('submitBtn');
     const successState = document.getElementById('successState');
     const errorMsg = document.getElementById('errorMsg');
-
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       submitBtn.disabled = true;
@@ -789,7 +717,6 @@
         _subject: 'New Client Inquiry – AJ Lopez Landing Page',
       };
       try {
-        // ⚠️ Replace YOUR_FORM_ID with your Formspree form ID (free at formspree.io)
         const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -805,7 +732,6 @@
         submitBtn.textContent = 'Submit My Info';
       }
     });
-
     document.querySelector('a[href="#contact"]')?.addEventListener('click', e => {
       e.preventDefault();
       document.getElementById('form-anchor')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
