@@ -701,37 +701,47 @@
     </div>
   </footer>
 
-  <script>
-    const form = document.getElementById('intakeForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const successState = document.getElementById('successState');
-    const errorMsg = document.getElementById('errorMsg');
-    const iframe = document.getElementById('form-target');
+ <script>
+  const form = document.getElementById('intakeForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successState = document.getElementById('successState');
+  const errorMsg = document.getElementById('errorMsg');
+  const iframe = document.getElementById('form-target');
 
-    // Show success when Make.com responds via the hidden iframe
-    iframe.addEventListener('load', function () {
-      if (iframe.dataset.submitted !== 'true') return;
-      form.style.display = 'none';
-      successState.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit My Info';
-    });
+  iframe.addEventListener('load', function () {
+    if (iframe.dataset.submitted !== 'true') return;
 
-    form.addEventListener('submit', (e) => {
-      let tsField = document.getElementById('submitted_at_field');
-      if (!tsField) {
-        tsField = document.createElement('input');
-        tsField.type = 'hidden';
-        tsField.name = 'submitted_at';
-        tsField.id = 'submitted_at_field';
-        form.appendChild(tsField);
-      }
-      tsField.value = new Date().toISOString();
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
-      errorMsg.style.display = 'none';
-      iframe.dataset.submitted = 'true';
+    form.style.display = 'none';
+    successState.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit My Info';
+  });
+
+  form.addEventListener('submit', () => {
+    let tsField = document.getElementById('submitted_at_field');
+
+    if (!tsField) {
+      tsField = document.createElement('input');
+      tsField.type = 'hidden';
+      tsField.name = 'submitted_at';
+      tsField.id = 'submitted_at_field';
+      form.appendChild(tsField);
+    }
+
+    tsField.value = new Date().toISOString();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    errorMsg.style.display = 'none';
+    iframe.dataset.submitted = 'true';
+  });
+
+  document.querySelector('a[href="#contact"]')?.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('form-anchor')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     });
-    document.querySelector('a[href="#contact"]')?.addEventListener('click', e => {
-      e.preventDefault();
-      document.getElementById('form-anchor')?.scrollIntoView({ behavior: 'smooth',
+  });
+</script>
+</body>
+</html>
