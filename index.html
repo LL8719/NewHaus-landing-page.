@@ -713,8 +713,9 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    const formData = new FormData(form);
+    const formData = new FormData(document.getElementById('intakeForm'));
     formData.append('submitted_at', new Date().toISOString());
+    console.log([...formData.entries()]);
 
     try {
       await fetch(form.action, {
