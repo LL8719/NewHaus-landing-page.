@@ -586,8 +586,8 @@
           <p class="form-card-label">Get in Touch</p>
           <h2>Let's <em>Get Started</em></h2>
           <p class="form-sub">Fill out your info and I'll reach out right away.</p>
-          <iframe id="form-target" name="form-target" style="display:none;" aria-hidden="true"></iframe>
-          <form id="intakeForm" method="POST" action="https://hook.us2.make.com/88pg46fmgnbmz6f0cdwqswvj2rrr7cqc" target="form-target">
+         
+          <form id="intakeForm" method="POST" action="https://hook.us2.make.com/88pg46fmgnbmz6f0cdwqswvj2rrr7cqc">
             <div class="fg">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
@@ -701,21 +701,8 @@
     </div>
   </footer>
 
- <script>
+<script>
   const form = document.getElementById('intakeForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const successState = document.getElementById('successState');
-  const errorMsg = document.getElementById('errorMsg');
-  const iframe = document.getElementById('form-target');
-
-  iframe.addEventListener('load', function () {
-    if (iframe.dataset.submitted !== 'true') return;
-
-    form.style.display = 'none';
-    successState.style.display = 'block';
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit My Info';
-  });
 
   form.addEventListener('submit', () => {
     let tsField = document.getElementById('submitted_at_field');
@@ -729,18 +716,6 @@
     }
 
     tsField.value = new Date().toISOString();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    errorMsg.style.display = 'none';
-    iframe.dataset.submitted = 'true';
-  });
-
-  document.querySelector('a[href="#contact"]')?.addEventListener('click', e => {
-    e.preventDefault();
-    document.getElementById('form-anchor')?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
   });
 </script>
 </body>
