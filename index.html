@@ -587,8 +587,13 @@
           <h2>Let's <em>Get Started</em></h2>
           <p class="form-sub">Fill out your info and I'll reach out right away.</p>
          
-          <form id="intakeForm" method="POST" action="https://hook.us2.make.com/88pg46fmgnbmz6f0cdwqswvj2rrr7cqc">
-            <div class="fg">
+          <iframe name="form-target" style="display:none;"></iframe>
+
+<form id="intakeForm"
+  method="POST"
+  action="https://hook.us2.make.com/88pg46fmgnbmz6f0cdwqswvj2rrr7cqc"
+  target="form-target">
+  <div class="fg">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
             </div>
@@ -702,37 +707,20 @@
   </footer>
 
 <script>
-  const form = document.getElementById('intakeForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const successState = document.getElementById('successState');
-  const errorMsg = document.getElementById('errorMsg');
+const form = document.getElementById('intakeForm');
+const submitBtn = document.getElementById('submitBtn');
 
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+form.addEventListener('submit', function () {
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-
-    const formData = new FormData(document.getElementById('intakeForm'));
-    formData.append('submitted_at', new Date().toISOString());
-    console.log([...formData.entries()]);
-
-    try {
-      await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
-      });
-
-      form.reset();
-      form.style.display = 'none';
-      successState.style.display = 'block';
-    } catch (error) {
-      errorMsg.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit My Info';
-    }
-  });
+  setTimeout(() => {
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit My Info';
+    alert('Form submitted successfully!');
+  }, 1500);
+});
 </script>
 </body>
 </html>
