@@ -703,19 +703,34 @@
 
 <script>
   const form = document.getElementById('intakeForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successState = document.getElementById('successState');
+  const errorMsg = document.getElementById('errorMsg');
 
-  form.addEventListener('submit', () => {
-    let tsField = document.getElementById('submitted_at_field');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-    if (!tsField) {
-      tsField = document.createElement('input');
-      tsField.type = 'hidden';
-      tsField.name = 'submitted_at';
-      tsField.id = 'submitted_at_field';
-      form.appendChild(tsField);
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+    formData.append('submitted_at', new Date().toISOString());
+
+    try {
+      await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      });
+
+      form.reset();
+      form.style.display = 'none';
+      successState.style.display = 'block';
+    } catch (error) {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit My Info';
     }
-
-    tsField.value = new Date().toISOString();
   });
 </script>
 </body>
