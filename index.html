@@ -715,10 +715,8 @@ form.addEventListener('submit', function () {
   submitBtn.textContent = 'Sending...';
 
   setTimeout(() => {
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit My Info';
-    alert('Form submitted successfully!');
+    form.style.display = 'none';
+    document.getElementById('successState').style.display = 'block';
   }, 1500);
 });
 </script>
