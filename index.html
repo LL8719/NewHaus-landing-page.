@@ -277,6 +277,39 @@
     }
     .stat .lbl { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
 
+    /* ─── REVIEWS CAROUSEL ─── */
+    .reviews { margin-top: 28px; text-align: center; }
+    .reviews-track { position: relative; }
+    .review {
+      position: absolute; inset: 0; margin: 0;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.6s ease;
+      background: var(--cream); border: 1px solid var(--border); border-radius: 3px;
+      padding: 28px 26px;
+    }
+    .review.is-active { position: relative; opacity: 1; visibility: visible; } /* active dictates height */
+    .review-stars { color: #C9A227; letter-spacing: 3px; font-size: 0.95rem; margin-bottom: 14px; }
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-style: italic; font-weight: 400; line-height: 1.5;
+      color: var(--text); margin: 0 0 16px;
+    }
+    .review-meta { display: flex; flex-direction: column; gap: 3px; }
+    .review-name { font-size: 0.8rem; font-weight: 500; color: var(--black); letter-spacing: 0.04em; }
+    .review-src {
+      font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .reviews-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+    .dot {
+      width: 7px; height: 7px; padding: 0; border-radius: 50%; cursor: pointer;
+      background: transparent; border: 1px solid var(--khaki);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .dot.is-active { background: var(--khaki-dark); border-color: var(--khaki-dark); }
+    .reviews-cta { margin-top: 20px; }
+    @media (prefers-reduced-motion: reduce) { .review { transition: none; } }
+
     /* ─── FORM CARD ─── */
     .form-card {
       background: var(--cream); border: 1px solid var(--border);
@@ -326,6 +359,17 @@
       pointer-events: none; color: var(--khaki); font-size: 0.85rem;
     }
     .fg-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 5px; }
+    .opt-in-row { margin: 18px 0 10px; }
+    .opt-in-checkbox {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.76rem; line-height: 1.45; color: var(--text-mid);
+      cursor: pointer;
+    }
+    .opt-in-checkbox input {
+      width: 16px; height: 16px;
+      margin-top: 3px; flex: 0 0 auto;
+      accent-color: var(--khaki-dark);
+    }
     .submit-btn {
       width: 100%; padding: 16px; margin-top: 8px;
       background: var(--khaki-dark); color: var(--white);
@@ -338,6 +382,15 @@
     .submit-btn:hover { background: var(--black); }
     .submit-btn:disabled { background: var(--khaki-light); cursor: not-allowed; }
     .privacy-note { text-align: center; font-size: 0.7rem; color: var(--text-muted); margin-top: 14px; }
+    .privacy-links {
+      display: flex; justify-content: center; align-items: center; gap: 8px;
+      margin-top: 6px; font-size: 0.68rem;
+    }
+    .privacy-links a {
+      color: var(--khaki-dark); text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .privacy-links a:hover { color: var(--black); }
     .error-msg { display: none; text-align: center; font-size: 0.8rem; color: #b94a3a; margin-top: 12px; }
     .success-state { display: none; text-align: center; padding: 20px 0 10px; }
     .success-state .s-icon { font-size: 2.4rem; margin-bottom: 12px; }
@@ -579,6 +632,56 @@
           <div class="stat"><div class="num">AZ</div><div class="lbl">Licensed Realtor</div></div>
           <div class="stat"><div class="num">EN/ES</div><div class="lbl">Bilingual</div></div>
         </div>
+
+        <!-- ─── GOOGLE REVIEWS CAROUSEL ─── -->
+        <div class="reviews" id="reviews" aria-label="Client reviews" aria-roledescription="carousel">
+          <div class="reviews-track">
+            <!-- PLACEHOLDER REVIEWS — swap text/name/star count for the real ones -->
+            <figure class="review is-active">
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote class="review-text">AJ made our first home purchase completely stress-free. Always available, always honest, and truly fought for us at every step.</blockquote>
+              <figcaption class="review-meta">
+                <span class="review-name">Maria G.</span>
+                <span class="review-src">via Google</span>
+              </figcaption>
+            </figure>
+            <figure class="review">
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote class="review-text">Knew the Phoenix market inside and out and got our home sold above asking in under two weeks. Highly recommend.</blockquote>
+              <figcaption class="review-meta">
+                <span class="review-name">David &amp; Lupe R.</span>
+                <span class="review-src">via Google</span>
+              </figcaption>
+            </figure>
+            <figure class="review">
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote class="review-text">Being able to work with someone fluent in Spanish made my parents feel comfortable through the whole process. Professional and patient.</blockquote>
+              <figcaption class="review-meta">
+                <span class="review-name">Jasmine T.</span>
+                <span class="review-src">via Google</span>
+              </figcaption>
+            </figure>
+            <figure class="review">
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote class="review-text">From pre-qualification to closing day, AJ guided us with patience and care. We couldn't have asked for a better realtor.</blockquote>
+              <figcaption class="review-meta">
+                <span class="review-name">Carlos M.</span>
+                <span class="review-src">via Google</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="reviews-dots" role="tablist" aria-label="Choose review">
+            <button class="dot is-active" type="button" aria-label="Review 1"></button>
+            <button class="dot" type="button" aria-label="Review 2"></button>
+            <button class="dot" type="button" aria-label="Review 3"></button>
+            <button class="dot" type="button" aria-label="Review 4"></button>
+          </div>
+
+          <a class="btn btn-outline reviews-cta" href="https://www.google.com/search?si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_zhGkPfjW3bm9bixZ_sZADnKxOcXAnmdPm4iW60oSMYBvSOQBvXNhLo9iDWcRVBmMCNY9cjHMEoFY5GpIjggYUu0JbQIsXjlUa0sJNB1GWa97uiLmw%3D%3D&amp;q=Realtor+Services+Reviews" target="_blank" rel="noopener">
+            Read all reviews on Google
+          </a>
+        </div>
       </div>
       <!-- Right: Form -->
       <div id="form-anchor">
@@ -600,11 +703,17 @@
             <div class="fg">
               <label for="phone">Phone Number</label>
               <input type="tel" id="phone" name="phone" placeholder="(480) 000-0000" required autocomplete="tel">
-              <p class="fg-hint">I'll only text or call to follow up — never spam.</p>
+              <p class="fg-hint">By submitting your number, you agree to receive calls/texts from AJ about real estate updates, appointments, and follow-up communications. Message and data rates may apply. Reply STOP to opt out at any time.</p>
             </div>
             <div class="fg">
               <label for="email">Email Address</label>
               <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+            </div>
+            <div class="fg opt-in-row">
+              <label class="opt-in-checkbox" for="optIn">
+                <input type="checkbox" id="optIn" name="optIn" value="yes">
+                <span>I consent to receive email updates, market insights, and home-related information from AJ. I understand I may unsubscribe at any time.</span>
+              </label>
             </div>
             <div class="fg">
               <label for="language">Preferred Language</label>
@@ -616,7 +725,12 @@
               </div>
             </div>
             <button type="submit" class="submit-btn" id="submitBtn">Submit My Info</button>
-            <p class="privacy-note">🔒 Your information is private and never shared.</p>
+            <p class="privacy-note">🔒 By submitting this form, you confirm your consent to be contacted by AJ regarding real estate services. You may opt out at any time.</p>
+            <p class="privacy-links">
+              <a href="https://leadhauscrm.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+              <span>•</span>
+              <a href="https://leadhauscrm.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+            </p>
             <p class="error-msg" id="errorMsg">Something went wrong. Please try again or contact me directly.</p>
           </form>
           <div class="success-state" id="successState">
@@ -719,6 +833,31 @@ form.addEventListener('submit', function () {
     document.getElementById('successState').style.display = 'block';
   }, 1500);
 });
+
+// ─── Reviews carousel ───
+(function () {
+  const root = document.getElementById('reviews');
+  if (!root) return;
+  const slides = Array.from(root.querySelectorAll('.review'));
+  const dots = Array.from(root.querySelectorAll('.dot'));
+  if (slides.length < 2) return;
+
+  let idx = 0, timer = null;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(n) {
+    idx = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === idx));
+    dots.forEach((d, k) => d.classList.toggle('is-active', k === idx));
+  }
+  function start() { if (!reduce) timer = setInterval(() => show(idx + 1), 5000); }
+  function stop() { clearInterval(timer); timer = null; }
+
+  dots.forEach((d, k) => d.addEventListener('click', () => { show(k); stop(); start(); }));
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  start();
+})();
 </script>
 </body>
 </html>
