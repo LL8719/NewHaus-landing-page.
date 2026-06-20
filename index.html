@@ -359,16 +359,20 @@
       pointer-events: none; color: var(--khaki); font-size: 0.85rem;
     }
     .fg-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 5px; }
-    .opt-in-row { margin: 18px 0 10px; }
+    .opt-in-row { margin: 14px 0 12px; }
     .opt-in-checkbox {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-size: 0.76rem; line-height: 1.45; color: var(--text-mid);
+      display: flex; align-items: flex-start; gap: 8px;
+      margin-bottom: 0;
+      font-size: 0.68rem; font-weight: 400; line-height: 1.4;
+      letter-spacing: 0.03em; text-transform: none; color: var(--text-mid);
       cursor: pointer;
     }
     .opt-in-checkbox input {
-      width: 16px; height: 16px;
-      margin-top: 3px; flex: 0 0 auto;
+      -webkit-appearance: checkbox; appearance: auto;
+      width: 14px; height: 14px; min-width: 14px;
+      padding: 0; margin: 1px 0 0; flex: 0 0 14px;
       accent-color: var(--khaki-dark);
+      cursor: pointer;
     }
     .submit-btn {
       width: 100%; padding: 16px; margin-top: 8px;
