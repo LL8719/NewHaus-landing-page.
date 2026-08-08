@@ -50,6 +50,21 @@
       padding: 16px clamp(16px, 4vw, 40px);
       min-height: 56px;
     }
+    .nav-brand {
+      position: absolute;
+      left: clamp(14px, 2vw, 28px);
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 0;
+      z-index: 1;
+    }
+    .nav-brand img {
+      display: block;
+      width: 58px;
+      height: auto;
+      max-height: 44px;
+      object-fit: contain;
+    }
     .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.5vw, 26px); }
     .nav-link {
       font-size: 0.68rem;
@@ -78,11 +93,64 @@
     @media (max-width: 700px) {
       .nav-phone span { display: none; }
     }
+    @media (max-width: 900px) {
+      .nav-brand { display: none; }
+    }
     @media (max-width: 420px) {
       .site-nav { padding: 12px 14px; }
       .nav-links { gap: 12px; }
       .nav-link { font-size: 0.6rem; letter-spacing: 0.1em; }
       .nav-socials { gap: 10px; padding-left: 12px; }
+    }
+
+    /* ─── FLOATING CONTACT TAB ─── */
+    .edge-contact {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      z-index: 190;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 22px 12px 20px;
+      border: 1px solid var(--khaki-dark);
+      border-right: 0;
+      border-radius: 24px 0 0 24px;
+      background: var(--khaki);
+      color: var(--black);
+      font-size: 0.64rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: translateY(-50%);
+      box-shadow: 0 10px 30px rgba(17, 17, 17, 0.12);
+      transition: background 0.2s ease, color 0.2s ease, padding 0.2s ease;
+    }
+    .edge-contact svg { transform: rotate(90deg); }
+    .edge-contact:hover,
+    .edge-contact:focus-visible {
+      padding-right: 16px;
+      background: var(--black);
+      color: var(--white);
+      outline: none;
+    }
+    @media (max-width: 600px) {
+      .edge-contact {
+        top: auto;
+        right: 14px;
+        bottom: 14px;
+        padding: 13px 18px;
+        border: 1px solid var(--khaki-dark);
+        border-radius: 999px;
+        writing-mode: horizontal-tb;
+        transform: none;
+      }
+      .edge-contact svg { transform: none; }
+      .edge-contact:hover,
+      .edge-contact:focus-visible { padding-right: 18px; }
     }
 
     /* ─── HERO LOGO BLOCK ─── */
@@ -261,6 +329,17 @@
     .resource-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; flex: 1; }
 
     /* ─── SECTION LAYOUT ─── */
+    .aj-about-band {
+      background:
+        linear-gradient(rgba(242, 242, 242, 0.12), rgba(242, 242, 242, 0.22)),
+        url('assets/about-aj-bedroom.webp') center center / cover no-repeat;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .aj-about-band .form-card {
+      background: rgba(229, 221, 208, 0.9);
+      backdrop-filter: blur(1.5px);
+    }
     .section {
       max-width: 1100px;
       margin: 0 auto;
@@ -291,6 +370,15 @@
       .main-grid { grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); }
     }
     .left-prose p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 20px; }
+    .about-copy-panel {
+      width: 100%;
+      padding: 22px 24px;
+      background: rgba(229, 221, 208, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      backdrop-filter: blur(1.5px);
+    }
+    .left-prose .about-copy-panel p:last-child { margin-bottom: 0; }
     .divider-line { width: 100%; height: 1px; background: var(--border); margin: 28px 0; }
     .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
     .stat {
@@ -305,6 +393,13 @@
     .stat .lbl { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
 
     /* ─── SERVICES ─── */
+    .services-photo-band {
+      background:
+        linear-gradient(rgba(242, 242, 242, 0.12), rgba(242, 242, 242, 0.22)),
+        url('assets/what-we-do-kitchen.webp') center center / cover no-repeat;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
     .services-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -317,6 +412,8 @@
       padding: clamp(22px, 3vw, 30px);
       border: 1px solid var(--border);
       border-radius: 3px;
+      background: rgba(242, 242, 242, 0.78);
+      backdrop-filter: blur(1.5px);
       display: flex; flex-direction: column; gap: 12px;
     }
     .service-card h3 {
@@ -331,10 +428,35 @@
       background: var(--cream);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
+      overflow: hidden;
     }
     .team-grid {
       display: flex; flex-wrap: wrap; justify-content: center;
       gap: 28px; margin-top: 36px;
+      position: relative;
+    }
+    .team-side-logo {
+      position: absolute;
+      width: auto;
+      height: 162px;
+      max-width: none;
+      object-fit: contain;
+      opacity: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .team-side-logo-left {
+      top: -126px;
+      right: calc(100% + 24px);
+    }
+    @media (min-width: 1280px) {
+      .team-band .section-tag,
+      .team-band .section-title,
+      .team-grid { transform: translateX(40px); }
+      .team-side-logo-left { transform: translateX(-40px); }
+    }
+    @media (max-width: 1279px) {
+      .team-side-logo { display: none; }
     }
     .team-card {
       width: min(100%, 260px);
@@ -507,27 +629,72 @@
       line-height: 1.65;
     }
 
+    /* ─── LOOPING BRAND BELT ─── */
+    .logo-belt {
+      overflow: hidden;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .logo-belt-track {
+      display: flex;
+      width: max-content;
+      animation: logo-belt-scroll 28s linear infinite;
+    }
+    .logo-belt:hover .logo-belt-track { animation-play-state: paused; }
+    .logo-belt-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .logo-belt-item {
+      width: clamp(210px, 24vw, 300px);
+      height: 112px;
+      padding: 18px 40px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+      color: var(--black);
+    }
+    .logo-belt-item img {
+      display: block;
+      max-width: 210px;
+      max-height: 86px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    @keyframes logo-belt-scroll {
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-belt-track { animation-play-state: paused; }
+    }
+
     /* ─── FOOTER ─── */
     .site-footer {
       background: var(--footer-bg);
       border-top: 1px solid var(--border);
-      padding: 44px clamp(20px, 5vw, 60px) 0;
+      padding: 34px clamp(20px, 5vw, 60px) 0;
     }
     .footer-inner {
       max-width: 980px;
       margin: 0 auto;
     }
 
-    /* Two-column: Contact | Quick Links */
+    /* Three-column: Contact | West USA | Quick Links */
     .footer-cols {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px 80px;
-      align-items: start;
-      padding-bottom: 36px;
+      grid-template-columns: minmax(300px, 1.4fr) minmax(120px, 0.65fr) minmax(160px, 0.8fr);
+      gap: clamp(24px, 3vw, 44px);
+      align-items: center;
+      padding-bottom: 28px;
     }
-    @media (max-width: 580px) {
-      .footer-cols { grid-template-columns: 1fr; gap: 36px; }
+    @media (max-width: 700px) {
+      .footer-cols { grid-template-columns: 1fr; gap: 28px; align-items: start; }
     }
 
     .footer-col-label {
@@ -584,7 +751,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 28px;
+      margin-bottom: 0;
     }
     .footer-link-item {
       display: flex; align-items: center; gap: 9px;
@@ -595,16 +762,30 @@
     .footer-link-item:hover { color: var(--black); }
     .footer-link-item svg { color: var(--khaki-dark); flex-shrink: 0; }
 
-    /* West USA logo inside right column */
+    /* West USA logo centered between contact and quick links */
+    .footer-brand-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+    }
     .footer-westusa-logo {
-      display: block;
-      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0;
       line-height: 0;
     }
     .footer-westusa-logo img {
-      width: 200px;
+      width: min(100%, 180px);
       height: auto;
       display: block;
+    }
+    @media (max-width: 700px) {
+      .footer-brand-col,
+      .footer-westusa-logo { justify-content: flex-start; }
+      .footer-westusa-logo img { width: 160px; }
     }
     .footer-logo-fallback {
       font-size: 0.62rem;
@@ -637,6 +818,9 @@
   <!-- ─── SITE HEADER ─── -->
   <header class="site-header">
     <nav class="site-nav" aria-label="Primary">
+      <a class="nav-brand" href="#top" aria-label="New Haus Realty Group home">
+        <img src="assets/newhaus-logo-transparent.png" alt="New Haus Realty Group">
+      </a>
       <div class="nav-links">
         <a class="nav-link" href="#top">Home</a>
         <a class="nav-link" href="#team">Team</a>
@@ -662,6 +846,11 @@
       </div>
     </nav>
   </header>
+
+  <a class="edge-contact" href="#form-anchor" aria-label="Get in touch">
+    <span>Get in touch</span>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
 
   <!-- ─── HERO ─── -->
   <section class="hero">
@@ -732,6 +921,7 @@
   </div>
 
   <!-- ─── SERVICES ─── -->
+  <div class="services-photo-band">
   <div class="section" id="services">
     <p class="section-tag">What We Do</p>
     <h2 class="section-title">Full-Service Support,<br><em>Start to Finish</em></h2>
@@ -801,6 +991,7 @@
       </div>
     </div>
   </div>
+  </div>
 
   <!-- ─── TEAM ─── -->
   <div class="team-band" id="team">
@@ -808,6 +999,7 @@
       <p class="section-tag">Who We Are</p>
       <h2 class="section-title">Meet the <em>Team</em></h2>
       <div class="team-grid">
+        <img class="team-side-logo team-side-logo-left" src="assets/newhaus-logo-transparent.png" alt="" aria-hidden="true">
         <a class="team-card" href="#contact">
           <img class="team-photo" src="https://d3rq6m369s8u39.cloudfront.net/upload/9RBgJgqGJP8.jpeg"
                alt="AJ Lopez" onerror="this.onerror=null; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAAIBAA7';">
@@ -827,6 +1019,7 @@
   </div>
 
   <!-- ─── MAIN CONTENT ─── -->
+  <div class="aj-about-band">
   <div class="section" id="contact">
     <div class="main-grid">
       <!-- Left: About -->
@@ -834,8 +1027,10 @@
         <p class="section-tag">About AJ</p>
         <h2 class="section-title">One Stop Team for<br><em>Buyers &amp; Sellers</em></h2>
         <div class="divider-line"></div>
-        <p>As a proud member of the New Haus Realty Group and West USA Realty's Presidents Circle, I bring deep local expertise and a genuine passion for connecting families with the homes they deserve.</p>
-        <p>Fluent in both English and Spanish, I serve clients across the Phoenix metro area with honesty, dedication, and the personalized attention your biggest investment deserves.</p>
+        <div class="about-copy-panel">
+          <p>As a proud member of the New Haus Realty Group and West USA Realty's Presidents Circle, I bring deep local expertise and a genuine passion for connecting families with the homes they deserve.</p>
+          <p>Fluent in both English and Spanish, I serve clients across the Phoenix metro area with honesty, dedication, and the personalized attention your biggest investment deserves.</p>
+        </div>
         <div class="stats-row">
           <div class="stat"><div class="num">8+</div><div class="lbl">Years Experience</div></div>
           <div class="stat"><div class="num">AZ</div><div class="lbl">Licensed Realtor</div></div>
@@ -968,17 +1163,36 @@
       </div>
     </div>
   </div>
+  </div>
 
   <!-- ─── PULL QUOTE ─── -->
   <div class="pull-quote">
     <p>"Whether you're looking to buy or sell — I'm your one stop team in the Phoenix metro."</p>
   </div>
 
+  <!-- ─── LOOPING BRAND BELT ─── -->
+  <div class="logo-belt" id="affiliations" aria-label="New Haus Realty Group affiliations">
+    <div class="logo-belt-track">
+      <div class="logo-belt-group" role="list">
+        <div class="logo-belt-item" role="listitem"><img src="assets/newhaus-logo-transparent.png" alt="New Haus Realty Group"></div>
+        <div class="logo-belt-item" role="listitem"><img src="assets/west-usa-logo-transparent.png" alt="West USA Realty"></div>
+        <div class="logo-belt-item" role="listitem"><img src="assets/realtor-logo-transparent.png" alt="REALTOR"></div>
+        <div class="logo-belt-item" role="listitem"><img src="assets/equal-housing-opportunity-transparent.png" alt="Equal Housing Opportunity"></div>
+      </div>
+      <div class="logo-belt-group" aria-hidden="true">
+        <div class="logo-belt-item"><img src="assets/newhaus-logo-transparent.png" alt=""></div>
+        <div class="logo-belt-item"><img src="assets/west-usa-logo-transparent.png" alt=""></div>
+        <div class="logo-belt-item"><img src="assets/realtor-logo-transparent.png" alt=""></div>
+        <div class="logo-belt-item"><img src="assets/equal-housing-opportunity-transparent.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ─── FOOTER ─── -->
   <footer class="site-footer">
     <div class="footer-inner">
 
-      <!-- Two-column: Contact left | Quick Links right -->
+      <!-- Three-column: Contact left | West USA center | Quick Links right -->
       <div class="footer-cols">
 
         <!-- LEFT: Contact -->
@@ -1009,7 +1223,18 @@
           </div>
         </div>
 
-        <!-- RIGHT: Quick Links + West USA logo -->
+        <!-- CENTER: West USA Realty -->
+        <div class="footer-brand-col">
+          <div class="footer-westusa-logo">
+            <img
+              src="assets/west-usa-logo-transparent.png"
+              alt="West USA Realty"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="footer-logo-fallback" style="display:none;">West USA Realty</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Quick Links -->
         <div>
           <p class="footer-col-label">Quick Links</p>
           <div class="footer-links-list">
@@ -1033,14 +1258,6 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               Contact AJ
             </a>
-          </div>
-          <!-- West USA Realty logo sits below the links in the right column -->
-          <div class="footer-westusa-logo">
-            <img
-              src="https://raw.githubusercontent.com/LL8719/NewHaus-landing-page./main/west-usa-logo.png"
-              alt="West USA Realty"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="footer-logo-fallback" style="display:none;">West USA Realty</div>
           </div>
         </div>
 
