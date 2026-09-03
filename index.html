@@ -1118,12 +1118,8 @@
           <h2>Let's <em>Get Started</em></h2>
           <p class="form-sub">Fill out your info and I'll reach out right away.</p>
          
-          <iframe name="form-target" style="display:none;"></iframe>
-
-<form id="intakeForm"
-  method="POST"
-  action="https://hook.us2.make.com/88pg46fmgnbmz6f0cdwqswvj2rrr7cqc"
-  target="form-target">
+          <!-- CRM intake: AJ's leadhauscrm.com intake URL (Settings → Lead Intake → Copy). -->
+<form id="intakeForm">
   <div class="fg">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
@@ -1151,6 +1147,9 @@
                   <option value="Spanish">Spanish</option>
                 </select>
               </div>
+            </div>
+            <div style="position:absolute;left:-9999px" aria-hidden="true">
+              <label>Website<input type="text" name="hp_field" tabindex="-1" autocomplete="off"></label>
             </div>
             <button type="submit" class="submit-btn" id="submitBtn">Submit My Info</button>
             <p class="privacy-note">🔒 By submitting this form, you confirm your consent to be contacted by AJ regarding real estate services. You may opt out at any time.</p>
@@ -1283,17 +1282,48 @@
   </footer>
 
 <script>
+const AJ_INTAKE_URL = 'https://wctkkeaebrasrgwecnwq.supabase.co/functions/v1/intake-lead?key=4969f9ce58e14efa9504432690f52f9f48f39b6ec01245148138c19d6dbf4d7a';
+
 const form = document.getElementById('intakeForm');
 const submitBtn = document.getElementById('submitBtn');
+const errorMsg = document.getElementById('errorMsg');
 
-form.addEventListener('submit', function () {
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  errorMsg.style.display = 'none';
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  setTimeout(() => {
-    form.style.display = 'none';
-    document.getElementById('successState').style.display = 'block';
-  }, 1500);
+  const data = new FormData(form);
+
+  fetch(AJ_INTAKE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: data.get('name'),
+      email: data.get('email'),
+      phone: data.get('phone'),
+      hp_field: data.get('hp_field'),
+      source: 'Newhaus – AJ',
+      language: data.get('language')
+    })
+  })
+    .then(function (r) { return r.json().catch(function () { return {}; }); })
+    .then(function (d) {
+      if (d && d.success) {
+        form.style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+      } else {
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit My Info';
+      }
+    })
+    .catch(function () {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit My Info';
+    });
 });
 
 // ─── Reviews carousel ───

@@ -915,13 +915,9 @@
           <h2>Let's <em>Get Started</em></h2>
           <p class="form-sub">Fill out your info and I'll reach out right away.</p>
 
-          <iframe name="form-target" style="display:none;"></iframe>
-
-          <!-- TODO: replace this placeholder action with Yanet's CRM lead-intake URL (pending — see conversation) -->
-          <form id="intakeForm"
-            method="POST"
-            action="https://example.com/REPLACE-WITH-YANET-CRM-WEBHOOK"
-            target="form-target">
+          <!-- CRM intake: replace YANET_INTAKE_URL below with her real leadhauscrm.com
+               intake URL (Settings → Lead Intake → Copy). Keep &route=owner on the end. -->
+          <form id="intakeForm">
             <div class="fg">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
@@ -949,6 +945,9 @@
                   <option value="Spanish">Spanish</option>
                 </select>
               </div>
+            </div>
+            <div style="position:absolute;left:-9999px" aria-hidden="true">
+              <label>Website<input type="text" name="hp_field" tabindex="-1" autocomplete="off"></label>
             </div>
             <button type="submit" class="submit-btn" id="submitBtn">Submit My Info</button>
             <p class="privacy-note">🔒 By submitting this form, you confirm your consent to be contacted by Yanet regarding real estate services. You may opt out at any time.</p>
@@ -1074,17 +1073,48 @@
   </footer>
 
 <script>
+const YANET_INTAKE_URL = 'https://wctkkeaebrasrgwecnwq.supabase.co/functions/v1/intake-lead?key=59061d39219e401ebb936828c1a55107fdc5cd979a254eddb4ef2044d87b80d2';
+
 const form = document.getElementById('intakeForm');
 const submitBtn = document.getElementById('submitBtn');
+const errorMsg = document.getElementById('errorMsg');
 
-form.addEventListener('submit', function () {
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  errorMsg.style.display = 'none';
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  setTimeout(() => {
-    form.style.display = 'none';
-    document.getElementById('successState').style.display = 'block';
-  }, 1500);
+  const data = new FormData(form);
+
+  fetch(YANET_INTAKE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: data.get('name'),
+      email: data.get('email'),
+      phone: data.get('phone'),
+      hp_field: data.get('hp_field'),
+      source: 'Newhaus – Yanet',
+      language: data.get('language')
+    })
+  })
+    .then(function (r) { return r.json().catch(function () { return {}; }); })
+    .then(function (d) {
+      if (d && d.success) {
+        form.style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+      } else {
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit My Info';
+      }
+    })
+    .catch(function () {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit My Info';
+    });
 });
 </script>
 </body>
