@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yanet Gonzalez · New Haus Realty Group</title>
+  <meta name="description" content="Yanet Gonzalez, REALTOR® with New Haus Realty Group by West USA Realty in Phoenix, AZ — helping buyers and sellers across the Phoenix metro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white:       #F2F2F2;
+      --cream:       #E5DDD0;
+      --khaki:       #A89880;
+      --khaki-light: #C8BBAA;
+      --khaki-dark:  #7A6E60;
+      --black:       #111111;
+      --text:        #1A1A1A;
+      --text-mid:    #5A5248;
+      --text-muted:  #8A7E72;
+      --border:      #D6CEBC;
+      --footer-bg:   #EBEBEB;
+    }
+    html { scroll-behavior: smooth; }
+    #top, #team, #services, #contact, #form-anchor, #reviews { scroll-margin-top: 76px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ─── SITE HEADER ─── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      padding: 16px clamp(16px, 4vw, 40px);
+      min-height: 56px;
+    }
+    .nav-brand {
+      position: absolute;
+      left: clamp(14px, 2vw, 28px);
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 0;
+      z-index: 1;
+    }
+    .nav-brand img {
+      display: block;
+      width: 58px;
+      height: auto;
+      max-height: 44px;
+      object-fit: contain;
+    }
+    .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.5vw, 26px); }
+    .nav-link {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-mid);
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--black); }
+    .nav-meta { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+    .nav-phone {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--black); text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-phone svg { color: var(--khaki-dark); }
+    .nav-socials {
+      display: flex; align-items: center; gap: 12px;
+      padding-left: 16px; border-left: 1px solid var(--border);
+    }
+    .nav-socials a { color: var(--khaki-dark); line-height: 0; transition: color 0.15s; }
+    .nav-socials a:hover { color: var(--black); }
+    @media (max-width: 700px) {
+      .nav-phone span { display: none; }
+    }
+    @media (max-width: 900px) {
+      .nav-brand { display: none; }
+    }
+    @media (max-width: 420px) {
+      .site-nav { padding: 12px 14px; }
+      .nav-links { gap: 12px; }
+      .nav-link { font-size: 0.6rem; letter-spacing: 0.1em; }
+      .nav-socials { gap: 10px; padding-left: 12px; }
+    }
+
+    /* ─── FLOATING CONTACT TAB ─── */
+    .edge-contact {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      z-index: 190;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 22px 12px 20px;
+      border: 1px solid var(--khaki-dark);
+      border-right: 0;
+      border-radius: 24px 0 0 24px;
+      background: var(--khaki);
+      color: var(--black);
+      font-size: 0.64rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: translateY(-50%);
+      box-shadow: 0 10px 30px rgba(17, 17, 17, 0.12);
+      transition: background 0.2s ease, color 0.2s ease, padding 0.2s ease;
+    }
+    .edge-contact svg { transform: rotate(90deg); }
+    .edge-contact:hover,
+    .edge-contact:focus-visible {
+      padding-right: 16px;
+      background: var(--black);
+      color: var(--white);
+      outline: none;
+    }
+    @media (max-width: 600px) {
+      .edge-contact {
+        top: auto;
+        right: 14px;
+        bottom: 14px;
+        padding: 13px 18px;
+        border: 1px solid var(--khaki-dark);
+        border-radius: 999px;
+        writing-mode: horizontal-tb;
+        transform: none;
+      }
+      .edge-contact svg { transform: none; }
+      .edge-contact:hover,
+      .edge-contact:focus-visible { padding-right: 18px; }
+    }
+
+    /* ─── HERO LOGO BLOCK ─── */
+    .hero-logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-logo-block img {
+      width: clamp(200px, 26vw, 320px);
+      height: auto;
+      display: block;
+    }
+    .hero-logo-sub {
+      display: block;
+      margin-top: 10px;
+      padding: 5px 0;
+      border: none;
+      font-size: 0.90rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--khaki-dark);
+      text-align: center;
+      background: transparent;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      width: 100%;
+      padding: clamp(40px, 6vw, 72px) clamp(32px, 4vw, 60px);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+    }
+    @media (min-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0;
+        justify-items: center;
+      }
+    }
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--khaki-dark);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1px;
+      background: var(--khaki);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: var(--black);
+      line-height: 1.12;
+      margin-bottom: 8px;
+    }
+    .hero h1 em { font-style: italic; color: var(--khaki-dark); }
+    .hero-title-line {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--khaki-dark);
+      margin-bottom: 24px;
+    }
+    .hero-bio {
+      font-size: clamp(0.88rem, 1.5vw, 0.97rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-mid);
+      max-width: 420px;
+      margin-bottom: 32px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-photo-wrap { display: flex; justify-content: center; align-items: flex-end; }
+    .hero-photo-frame { position: relative; }
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid var(--khaki);
+      border-radius: 4px;
+      z-index: 0;
+    }
+    .hero-photo-frame img {
+      width: clamp(200px, 30vw, 320px);
+      height: clamp(240px, 38vw, 400px);
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-radius: 3px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-photo-badge {
+      position: absolute;
+      bottom: -16px; right: -16px;
+      background: var(--khaki);
+      border-radius: 3px;
+      padding: 10px 14px;
+      z-index: 2;
+    }
+    .hero-photo-badge .b-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600;
+      color: var(--white); line-height: 1;
+    }
+    .hero-photo-badge .b-label {
+      font-size: 0.58rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white);
+      opacity: 0.85;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 22px; border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.22s ease;
+      border: 1.5px solid transparent; white-space: nowrap;
+    }
+    .btn-dark { background: var(--khaki-dark); color: var(--white); border-color: var(--khaki-dark); }
+    .btn-dark:hover { background: var(--black); border-color: var(--black); }
+    .btn-outline { background: transparent; color: var(--text); border-color: var(--khaki); }
+    .btn-outline:hover { background: var(--khaki); color: var(--white); border-color: var(--khaki); }
+    .btn-khaki { background: var(--khaki); color: var(--white); border-color: var(--khaki); }
+    .btn-khaki:hover { background: var(--khaki-dark); border-color: var(--khaki-dark); }
+
+    /* ─── RESOURCES STRIP ─── */
+    .resources-strip { background: var(--white); border-bottom: 1px solid var(--border); }
+    .resources-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .resources-grid { grid-template-columns: 1fr 1fr; } }
+    .resource-card {
+      padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 48px);
+      display: flex; flex-direction: column; gap: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 640px) {
+      .resource-card { border-bottom: none; }
+      .resource-card:first-child { border-right: 1px solid var(--border); }
+    }
+    .resource-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--cream); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .resource-icon svg { color: var(--khaki-dark); }
+    .resource-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 600; color: var(--black); line-height: 1.2;
+    }
+    .resource-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; flex: 1; }
+
+    /* ─── SECTION LAYOUT ─── */
+    .yanet-about-band {
+      background:
+        linear-gradient(rgba(242, 242, 242, 0.12), rgba(242, 242, 242, 0.22)),
+        url('../assets/about-kim-kitchen.webp') center center / cover no-repeat;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .yanet-about-band .form-card {
+      background: rgba(229, 221, 208, 0.9);
+      backdrop-filter: blur(1.5px);
+    }
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 80px) clamp(20px, 5vw, 60px);
+    }
+    .section-tag {
+      font-size: 0.62rem; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--khaki-dark);
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
+    }
+    .section-tag::before {
+      content: ''; display: inline-block;
+      width: 22px; height: 1px; background: var(--khaki);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300; color: var(--black);
+      line-height: 1.15; margin-bottom: 8px;
+    }
+    .section-title em { font-style: italic; }
+    .main-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 40px; align-items: start;
+    }
+    @media (min-width: 768px) {
+      .main-grid { grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); }
+    }
+    .left-prose p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 20px; }
+    .about-copy-panel {
+      width: 100%;
+      padding: 22px 24px;
+      background: rgba(229, 221, 208, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      backdrop-filter: blur(1.5px);
+    }
+    .left-prose .about-copy-panel p:last-child { margin-bottom: 0; }
+    .divider-line { width: 100%; height: 1px; background: var(--border); margin: 28px 0; }
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+    .stat {
+      text-align: center; padding: 20px 10px;
+      background: var(--cream); border: 1px solid var(--border); border-radius: 3px;
+    }
+    .stat .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600;
+      color: var(--black); line-height: 1; margin-bottom: 5px;
+    }
+    .stat .lbl { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+
+    /* ─── SERVICES ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+    @media (min-width: 620px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 920px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+    .service-card {
+      padding: clamp(22px, 3vw, 30px);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 600;
+      color: var(--black); line-height: 1.25;
+    }
+    .service-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* ─── TEAM ─── */
+    .team-band {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .team-grid {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 28px; margin-top: 36px;
+    }
+    .team-card {
+      width: min(100%, 260px);
+      display: block; text-align: center;
+      text-decoration: none; color: inherit;
+    }
+    .team-photo {
+      width: 100%; aspect-ratio: 4 / 5;
+      object-fit: cover; object-position: top;
+      border-radius: 3px; border: 1px solid var(--khaki);
+      background: var(--khaki-light); display: block;
+    }
+    .team-card:hover .team-photo { border-color: var(--khaki-dark); }
+    .team-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: var(--black); margin-top: 14px;
+    }
+    .team-card-title {
+      font-size: 0.64rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--khaki-dark); margin-top: 3px;
+    }
+    .team-card-cta {
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-top: 8px; transition: color 0.15s;
+    }
+    .team-card:hover .team-card-cta { color: var(--black); }
+
+    /* ─── REVIEWS CAROUSEL ─── */
+    .reviews { margin-top: 28px; text-align: center; }
+    .reviews-track { position: relative; }
+    .review {
+      position: absolute; inset: 0; margin: 0;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.6s ease;
+      background: var(--cream); border: 1px solid var(--border); border-radius: 3px;
+      padding: 28px 26px;
+    }
+    .review.is-active { position: relative; opacity: 1; visibility: visible; } /* active dictates height */
+    .review-stars { color: #C9A227; letter-spacing: 3px; font-size: 0.95rem; margin-bottom: 14px; }
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-style: italic; font-weight: 400; line-height: 1.5;
+      color: var(--text); margin: 0 0 16px;
+    }
+    .review-meta { display: flex; flex-direction: column; gap: 3px; }
+    .review-name { font-size: 0.8rem; font-weight: 500; color: var(--black); letter-spacing: 0.04em; }
+    .review-src {
+      font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .reviews-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+    .dot {
+      width: 7px; height: 7px; padding: 0; border-radius: 50%; cursor: pointer;
+      background: transparent; border: 1px solid var(--khaki);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .dot.is-active { background: var(--khaki-dark); border-color: var(--khaki-dark); }
+    .reviews-cta { margin-top: 20px; }
+    @media (prefers-reduced-motion: reduce) { .review { transition: none; } }
+
+    /* ─── FORM CARD ─── */
+    .form-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 36px);
+      position: sticky; top: 88px;
+    }
+    .form-card-label {
+      font-size: 0.6rem; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--khaki-dark);
+      margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .form-card-label::before {
+      content: ''; display: inline-block;
+      width: 18px; height: 1px; background: var(--khaki);
+    }
+    .form-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 300; color: var(--black);
+      line-height: 1.15; margin-bottom: 6px;
+    }
+    .form-card h2 em { font-style: italic; color: var(--khaki-dark); }
+    .form-sub { font-size: 0.82rem; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+    .fg { margin-bottom: 16px; }
+    .fg label {
+      display: block; font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--khaki-dark); margin-bottom: 7px;
+    }
+    .fg input, .fg select {
+      width: 100%; padding: 13px 15px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 3px; font-size: 0.92rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text); outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .fg input::placeholder { color: var(--khaki-light); }
+    .fg input:focus, .fg select:focus { border-color: var(--khaki-dark); }
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '▾'; position: absolute;
+      right: 14px; top: 50%; transform: translateY(-50%);
+      pointer-events: none; color: var(--khaki); font-size: 0.85rem;
+    }
+    .fg-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 5px; }
+    .opt-in-row { margin: 14px 0 12px; }
+    .opt-in-checkbox {
+      display: flex; align-items: flex-start; gap: 8px;
+      margin-bottom: 0;
+      font-size: 0.68rem; font-weight: 400; line-height: 1.4;
+      letter-spacing: 0.03em; text-transform: none; color: var(--text-mid);
+      cursor: pointer;
+    }
+    .opt-in-checkbox input {
+      -webkit-appearance: checkbox; appearance: auto;
+      width: 14px; height: 14px; min-width: 14px;
+      padding: 0; margin: 1px 0 0; flex: 0 0 14px;
+      accent-color: var(--khaki-dark);
+      cursor: pointer;
+    }
+    .submit-btn {
+      width: 100%; padding: 16px; margin-top: 8px;
+      background: var(--khaki-dark); color: var(--white);
+      border: none; border-radius: 3px;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem;
+      font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.22s;
+    }
+    .submit-btn:hover { background: var(--black); }
+    .submit-btn:disabled { background: var(--khaki-light); cursor: not-allowed; }
+    .privacy-note { text-align: center; font-size: 0.7rem; color: var(--text-muted); margin-top: 14px; }
+    .privacy-links {
+      display: flex; justify-content: center; align-items: center; gap: 8px;
+      margin-top: 6px; font-size: 0.68rem;
+    }
+    .privacy-links a {
+      color: var(--khaki-dark); text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .privacy-links a:hover { color: var(--black); }
+    .error-msg { display: none; text-align: center; font-size: 0.8rem; color: #b94a3a; margin-top: 12px; }
+    .success-state { display: none; text-align: center; padding: 20px 0 10px; }
+    .success-state .s-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .success-state h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 300;
+      color: var(--black); margin-bottom: 8px;
+    }
+    .success-state p { font-size: 0.88rem; color: var(--text-mid); }
+
+    /* ─── PULL QUOTE ─── */
+    .pull-quote {
+      background: var(--khaki);
+      padding: clamp(28px, 4vw, 44px) clamp(20px, 5vw, 60px);
+      text-align: center;
+    }
+    .pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+      color: var(--white);
+      max-width: 620px; margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ─── LOOPING BRAND BELT ─── */
+    .logo-belt {
+      overflow: hidden;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .logo-belt-track {
+      display: flex;
+      width: max-content;
+      animation: logo-belt-scroll 28s linear infinite;
+    }
+    .logo-belt:hover .logo-belt-track { animation-play-state: paused; }
+    .logo-belt-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .logo-belt-item {
+      width: clamp(210px, 24vw, 300px);
+      height: 112px;
+      padding: 18px 40px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--border);
+      color: var(--black);
+    }
+    .logo-belt-item img {
+      display: block;
+      max-width: 210px;
+      max-height: 86px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    @keyframes logo-belt-scroll {
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-belt-track { animation-play-state: paused; }
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: var(--footer-bg);
+      border-top: 1px solid var(--border);
+      padding: 34px clamp(20px, 5vw, 60px) 0;
+    }
+    .footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* Three-column: Contact | West USA | Quick Links */
+    .footer-cols {
+      display: grid;
+      grid-template-columns: minmax(300px, 1.4fr) minmax(120px, 0.65fr) minmax(160px, 0.8fr);
+      gap: clamp(24px, 3vw, 44px);
+      align-items: center;
+      padding-bottom: 28px;
+    }
+    @media (max-width: 700px) {
+      .footer-cols { grid-template-columns: 1fr; gap: 28px; align-items: start; }
+    }
+
+    .footer-col-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    /* Contact column */
+    .footer-contact-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .footer-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover; object-position: top;
+      border: 3px solid var(--khaki);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .footer-contact-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .footer-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--black); line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    .footer-card-title {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .footer-card-title span { color: var(--border); margin: 0 5px; }
+    .footer-contact-row {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.82rem; color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-contact-row:hover { color: var(--black); }
+    .footer-contact-row svg { color: var(--khaki-dark); flex-shrink: 0; }
+
+    /* Quick Links column */
+    .footer-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+    .footer-link-item {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 0.86rem; color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-link-item:hover { color: var(--black); }
+    .footer-link-item svg { color: var(--khaki-dark); flex-shrink: 0; }
+
+    /* West USA logo centered between contact and quick links */
+    .footer-brand-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+    }
+    .footer-westusa-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0;
+      line-height: 0;
+    }
+    .footer-westusa-logo img {
+      width: min(100%, 180px);
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .footer-brand-col,
+      .footer-westusa-logo { justify-content: flex-start; }
+      .footer-westusa-logo img { width: 160px; }
+    }
+    .footer-logo-fallback {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Bottom: copyright */
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 18px 0 22px;
+    }
+    .footer-legal-row {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .stats-row .stat:last-child { grid-column: 1 / -1; }
+    }
+
+    /* ─── SUBPAGE OVERRIDES (Yanet) ─── */
+    .hero-text { position: relative; }
+    .yanet-hero-logo {
+      position: absolute;
+      top: 50%;
+      left: max(25px, calc((100vw - 1100px) / 2 - 239px));
+      width: clamp(110px, calc((100vw - 1100px) / 2 + 36px), 300px);
+      transform: translateY(-50%);
+      pointer-events: none;
+      user-select: none;
+    }
+    .yanet-hero-logo img { width: 100%; }
+    .yanet-hero-logo .hero-logo-sub {
+      font-size: clamp(0.6rem, 0.85vw, 0.9rem);
+      white-space: nowrap;
+    }
+    @media (max-width: 1199px) {
+      .yanet-hero-logo { display: none; }
+    }
+    @media (min-width: 768px) {
+      .hero-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+    @media (min-width: 1200px) {
+      .hero-inner {
+        max-width: none;
+        margin: 0;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        justify-items: center;
+      }
+      .hero-text { grid-column: 2; }
+      .hero-photo-wrap { grid-column: 3; }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- ─── SITE HEADER ─── -->
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="nav-brand" href="/" aria-label="New Haus Realty Group home">
+        <img src="../assets/newhaus-logo-transparent.png" alt="New Haus Realty Group">
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/#team">Team</a>
+        <a class="nav-link" href="/#services">Services</a>
+        <a class="nav-link" href="/#contact">Contact</a>
+      </div>
+      <div class="nav-meta">
+        <a class="nav-phone" href="tel:5627064781">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>562-706-4781</span>
+        </a>
+        <div class="nav-socials">
+          <a href="https://www.instagram.com/yanet_realtoraz/" target="_blank" rel="noopener noreferrer" aria-label="Yanet Gonzalez on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/yanet.gonzalez.39545" target="_blank" rel="noopener noreferrer" aria-label="Yanet Gonzalez on Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@yanetgonzalezrealtor1" target="_blank" rel="noopener noreferrer" aria-label="Yanet Gonzalez on TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.01-2.77V9.4a6.34 6.34 0 1 0 5.46 6.27v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <a class="edge-contact" href="#form-anchor" aria-label="Get in touch with Yanet">
+    <span>Get in touch</span>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </a>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-logo-block yanet-hero-logo" aria-hidden="true">
+        <img src="../assets/newhaus-logo-transparent.png" alt="">
+        <span class="hero-logo-sub">By West USA Realty</span>
+      </div>
+      <div class="hero-text">
+        <p class="hero-eyebrow">New Haus Realty Group</p>
+        <h1>Yanet<br><em>Gonzalez</em></h1>
+        <p class="hero-title-line">REALTOR® &nbsp;·&nbsp; West USA Realty</p>
+        <p class="hero-bio">Whether you're buying your first home or finding the one your family will grow into, I'm here to guide you every step of the way, with heart, honesty, and a personal touch.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#contact">Work With Yanet</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-frame">
+          <img src="headshot.jpg"
+            alt="Yanet Gonzalez – REALTOR®"
+            onerror="this.onerror=null; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAAIBAA7'; this.style.background='var(--khaki-light)';">
+          <div class="hero-photo-badge">
+            <div class="b-num">AZ</div>
+            <div class="b-label">Licensed REALTOR®</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <div class="yanet-about-band">
+  <div class="section" id="contact">
+    <div class="main-grid">
+      <!-- Left: About -->
+      <div class="left-prose">
+        <p class="section-tag">About Yanet</p>
+        <h2 class="section-title">A Realtor Who<br><em>Feels Like Family</em></h2>
+        <div class="divider-line"></div>
+        <div class="about-copy-panel">
+          <p>I'm Yanet Gonzalez, a wife, proud mama of four, and Arizona REALTOR® with a true passion for helping families achieve their dream of homeownership, because a home is so much more than four walls.</p>
+          <p>Outside of real estate, you'll find me cheering my kids on at their soccer games, and I bring that same genuine warmth to every client relationship, showing up for you every step of the way.</p>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><div class="num">1+</div><div class="lbl">Years Experience</div></div>
+          <div class="stat"><div class="num">AZ</div><div class="lbl">Licensed Realtor</div></div>
+          <div class="stat"><div class="num">EN/ES</div><div class="lbl">Bilingual</div></div>
+        </div>
+      </div>
+      <!-- Right: Form -->
+      <div id="form-anchor">
+        <div class="form-card">
+          <p class="form-card-label">Get in Touch</p>
+          <h2>Let's <em>Get Started</em></h2>
+          <p class="form-sub">Fill out your info and I'll reach out right away.</p>
+
+          <iframe name="form-target" style="display:none;"></iframe>
+
+          <!-- TODO: replace this placeholder action with Yanet's CRM lead-intake URL (pending — see conversation) -->
+          <form id="intakeForm"
+            method="POST"
+            action="https://example.com/REPLACE-WITH-YANET-CRM-WEBHOOK"
+            target="form-target">
+            <div class="fg">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
+            </div>
+            <div class="fg">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(602) 000-0000" required autocomplete="tel">
+              <p class="fg-hint">By submitting your number, you agree to receive calls/texts from Yanet about real estate updates, appointments, and follow-up communications. Message and data rates may apply. Reply STOP to opt out at any time.</p>
+            </div>
+            <div class="fg">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+            </div>
+            <div class="fg opt-in-row">
+              <label class="opt-in-checkbox" for="optIn">
+                <input type="checkbox" id="optIn" name="optIn" value="yes">
+                <span>I consent to receive email updates, market insights, and home-related information from Yanet. I understand I may unsubscribe at any time.</span>
+              </label>
+            </div>
+            <div class="fg">
+              <label for="language">Preferred Language</label>
+              <div class="select-wrap">
+                <select id="language" name="language">
+                  <option value="English">English</option>
+                  <option value="Spanish">Spanish</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Submit My Info</button>
+            <p class="privacy-note">🔒 By submitting this form, you confirm your consent to be contacted by Yanet regarding real estate services. You may opt out at any time.</p>
+            <p class="privacy-links">
+              <a href="https://leadhauscrm.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+              <span>•</span>
+              <a href="https://leadhauscrm.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+            </p>
+            <p class="error-msg" id="errorMsg">Something went wrong. Please try again or contact me directly.</p>
+          </form>
+          <div class="success-state" id="successState">
+            <div class="s-icon">🏡</div>
+            <h3>You're all set!</h3>
+            <p>Thanks for reaching out. We'll be in touch with you very soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ─── PULL QUOTE ─── -->
+  <div class="pull-quote">
+    <p>"A home is so much more than four walls. It's where memories are made, families grow, and new chapters begin."</p>
+  </div>
+
+  <!-- ─── LOOPING BRAND BELT ─── -->
+  <div class="logo-belt" id="affiliations" aria-label="New Haus Realty Group affiliations">
+    <div class="logo-belt-track">
+      <div class="logo-belt-group" role="list">
+        <div class="logo-belt-item" role="listitem"><img src="../assets/newhaus-logo-transparent.png" alt="New Haus Realty Group"></div>
+        <div class="logo-belt-item" role="listitem"><img src="../assets/west-usa-logo-transparent.png" alt="West USA Realty"></div>
+        <div class="logo-belt-item" role="listitem"><img src="../assets/realtor-logo-transparent.png" alt="REALTOR"></div>
+        <div class="logo-belt-item" role="listitem"><img src="../assets/equal-housing-opportunity-transparent.png" alt="Equal Housing Opportunity"></div>
+      </div>
+      <div class="logo-belt-group" aria-hidden="true">
+        <div class="logo-belt-item"><img src="../assets/newhaus-logo-transparent.png" alt=""></div>
+        <div class="logo-belt-item"><img src="../assets/west-usa-logo-transparent.png" alt=""></div>
+        <div class="logo-belt-item"><img src="../assets/realtor-logo-transparent.png" alt=""></div>
+        <div class="logo-belt-item"><img src="../assets/equal-housing-opportunity-transparent.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <!-- Three-column: Contact left | West USA center | Quick Links right -->
+      <div class="footer-cols">
+
+        <!-- LEFT: Contact -->
+        <div>
+          <p class="footer-col-label">Contact</p>
+          <div class="footer-contact-block">
+            <img
+              class="footer-avatar"
+              src="headshot.jpg"
+              alt="Yanet Gonzalez"
+              onerror="this.onerror=null; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAAIBAA7'; this.style.background='var(--cream)';">
+            <div class="footer-contact-rows">
+              <div class="footer-card-name">Yanet Gonzalez</div>
+              <div class="footer-card-title">Real Estate Agent <span>|</span> REALTOR®</div>
+              <a class="footer-contact-row" href="tel:5627064781">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                562-706-4781
+              </a>
+              <a class="footer-contact-row" href="mailto:yanetgonzalezrealtor@yahoo.com">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                yanetgonzalezrealtor@yahoo.com
+              </a>
+              <a class="footer-contact-row" href="#">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                4505 E Chandler Blvd Ste #170, Phoenix, AZ 85048
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTER: West USA Realty -->
+        <div class="footer-brand-col">
+          <div class="footer-westusa-logo">
+            <img
+              src="../assets/west-usa-logo-transparent.png"
+              alt="West USA Realty"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="footer-logo-fallback" style="display:none;">West USA Realty</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Quick Links -->
+        <div>
+          <p class="footer-col-label">Quick Links</p>
+          <div class="footer-links-list">
+            <a class="footer-link-item" href="../buyer-roadmap.pdf" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Buyer Roadmap PDF
+            </a>
+            <!-- TODO: replace with Yanet's own pre-qualification link if she has one -->
+            <a class="footer-link-item" href="https://181106.my1003app.com/935995/agent/amparolopez/register" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Get Pre-Qualified
+            </a>
+            <a class="footer-link-item" href="/#team">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Meet the Team
+            </a>
+            <a class="footer-link-item" href="#contact">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Contact Yanet
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /footer-cols -->
+
+      <!-- Bottom: copyright -->
+      <div class="footer-bottom">
+        <p class="footer-legal-row">© 2025 New Haus Realty Group · West USA Realty · Licensed in Arizona</p>
+      </div>
+
+    </div>
+  </footer>
+
+<script>
+const form = document.getElementById('intakeForm');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', function () {
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  setTimeout(() => {
+    form.style.display = 'none';
+    document.getElementById('successState').style.display = 'block';
+  }, 1500);
+});
+</script>
+</body>
+</html>
